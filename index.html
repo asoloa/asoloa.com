@@ -7,19 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Solomon Abejo - Personal Portfolio</title>
 
-	<!--
-	- favicon
-	-->
+	<!-- Logo -->
 	<link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 
-	<!--
-	- custom css link
-	-->
+	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="./assets/css/style.css">
 
-	<!--
-	- google font link
-	-->
+	<!-- Google Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -27,6 +21,7 @@
 
 <body>
 	<main>
+		<!-- Sidebar -->
 		<aside class="sidebar" data-sidebar>
 			<div class="sidebar-info">
 				<figure class="avatar-box" style="overflow: hidden;">
@@ -35,8 +30,7 @@
 
 				<div class="info-content">
 					<h1 class="name" title="Solomon Abejo">Solomon Abejo ☁️</h1>
-					<p class="title" style="white-space: pre-wrap;">
-						Be not afraid of going slowly,
+					<p class="title" style="white-space: pre-line;">Be not afraid of going slowly,
 						be afraid of only standing still. 🌱
 					</p>
 				</div>
@@ -118,11 +112,12 @@
 			</div>
 		</aside>
 
+		<!-- Main Content -->
 		<div class="main-content">
 			<nav class="navbar">
 				<ul class="navbar-list">
 					<li class="navbar-item">
-						<button class="navbar-link  active" data-nav-link>About</button>
+						<button class="navbar-link active" data-nav-link>About</button>
 					</li>
 					<li class="navbar-item">
 						<button class="navbar-link" data-nav-link>Resume</button>
@@ -139,6 +134,7 @@
 				</ul>
 			</nav>
 
+			<!-- About Tab -->
 			<article class="about active" data-page="about">
 				<header>
 					<h2 class="h2 article-title">About Sol 👨🏻‍💻</h2>
@@ -354,6 +350,7 @@
 				</section>
 			</article>
 
+			<!-- Resume Tab -->
 			<article class="resume" data-page="resume">
 				<header>
 					<h2 class="h2 article-title">Resume</h2>
@@ -530,11 +527,11 @@
 				</section>
 			</article>
 
+			<!-- Portfolio Tab -->
 			<article class="portfolio" data-page="portfolio">
 				<header>
-					<h2 class="h2 article-title">Portfolio</h2>
+					<h2 class="h2 article-title">Portfolio &lt;WIP&gt;</h2>
 				</header>
-
 				<section class="projects">
 					<ul class="filter-list">
 						<li class="filter-item">
@@ -697,9 +694,10 @@
 				</section>
 			</article>
 
+			<!-- Blog Tab -->
 			<article class="blog" data-page="blog">
 				<header>
-					<h2 class="h2 article-title">Blog</h2>
+					<h2 class="h2 article-title">Blog &lt;WIP&gt;</h2>
 				</header>
 				<section class="blog-posts">
 					<ul class="blog-posts-list">
@@ -820,16 +818,14 @@
 				</section>
 			</article>
 
+			<!-- Contact Tab -->
 			<article class="contact" data-page="contact">
 				<header>
-					<h2 class="h2 article-title">Contact</h2>
+					<h2 class="h2 article-title">Contact &lt;WIP&gt;</h2>
 				</header>
 				<section class="mapbox" data-mapbox>
 					<figure>
-						<iframe
-							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-							width="400" height="300" loading="lazy">
-						</iframe>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251172.0544141306!2d123.67854032091728!3d10.37675520060576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999258dcd2dfd%3A0x4c34030cdbd33507!2sCebu%20City%2C%20Cebu!5e0!3m2!1sen!2sph!4v1749240623819!5m2!1sen!2sph" width="400" height="300" loading="lazy"></iframe>
 					</figure>
 				</section>
 
@@ -851,22 +847,17 @@
 		</div>
 	</main>
 
-	<!--
-	- custom js link
-	-->
+	<!-- Custom JS -->
 	<script src="./assets/js/script.js"></script>
 
-	<!--
-	- ionicon link
-	-->
+	<!-- Ionic Icons -->
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+	<!-- Lucide Icons -->
 	<script src="https://unpkg.com/lucide@latest"></script>
 	<script>
 		lucide.createIcons();
 	</script>
-
 </body>
-
 </html>
