@@ -750,7 +750,8 @@ main {
 
 @media (max-width: 480px) {
   .testimonials-item {
-    width: 220px;
+    /* fixed width of 300px due to flex */
+    /* width: 220px; */
     margin-right: 8px;
   }
   
@@ -759,7 +760,8 @@ main {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-1232px); /* (220px + 8px) * 4 items */
+      /* Calculated using ([300px + 8px] * 6 testimonials) */
+      transform: translateX(-1848px);
     }
   }
 }
