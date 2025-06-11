@@ -140,7 +140,7 @@
 					<h2 class="h2 article-title">About Sol 👨🏻‍💻</h2>
 				</header>
 				<section class="about-text">
-					<p style="white-space: pre-line;">R&D and DevOps Engineer with 6 years of experience delivering cost-effective solutions. Experienced working with AWS, automation tools, virtualization tools, and various open-source software.
+					<p>R&D and DevOps Engineer with 6 years of experience delivering cost-effective solutions. Experienced working with AWS, automation tools, virtualization tools, and various open-source software.
 
 					Proven track record in leading successful projects, delivering Linux and Ansible trainings and assessments, and possessing strong troubleshooting and investigation skills.
 
@@ -149,7 +149,10 @@
 				</section>
 
 				<section class="service">
-					<h3 class="h3 service-title">What i'm doing</h3>
+					<div class="section-title-wrapper">
+						<p>👽</p>
+						<h3 class="h3">What I Do</h3>
+					</div>
 					<ul class="service-list">
 						<li class="service-item">
 							<div class="service-icon-box">
@@ -201,10 +204,25 @@
 					</ul>
 				</section>
 
+				<section class="technologies">
+					<div class="section-title-wrapper">
+						<p>🛠</p>
+						<h3 class="h3">Tools</h3>
+					</div>
+					<div class="stack-grid">
+						<!-- This section will be populated via ./assets/js/about/technologies.js -->
+					</div>
+				</section>
+
 				<section class="testimonials">
-					<h3 class="h3 testimonials-title">Testimonials</h3>
-					<div class="testimonials-marquee">
-						<!-- This section will be populated via ./assets/js/testimonials.js -->
+					<div class="section-title-wrapper">
+						<p>✨</p>
+						<h3 class="h3">Testimonials</h3>
+					</div>
+					<div class="splide testimonials-splide">
+						<div class="testimonials-marquee splide__track">
+							<!-- This section will be populated via ./assets/js/about/testimonials.js -->
+						</div>
 					</div>
 				</section>
  
@@ -230,16 +248,6 @@
 						</div>
 					</section>
 				</div>
-
-				<section class="stack-section">
-					<h3 class="h3 clients-title">⚡ Stacks</h3>
-					<div class="stack-grid">
-						<div class="stack-icon" style="--delay: 0s"><img src="./assets/images/avatar-1.png" alt="Python" /></div>
-						<div class="stack-icon" style="--delay: 0.2s"><img src="./assets/images/avatar-2.png" alt="TypeScript" /></div>
-						<div class="stack-icon" style="--delay: 0.4s"><img src="./assets/images/avatar-3.png" alt="Go" /></div>
-						<div class="stack-icon" style="--delay: 0.6s"><img src="./assets/images/avatar-4.png" alt="C++" /></div>
-					</div>
-				</section>
 			</article>
 
 			<!-- Resume Tab -->
@@ -740,9 +748,14 @@
 	</main>
 
 	<!-- Custom JS -->
-	<script src="./assets/js/testimonials.js"></script>
-	<script src="./assets/js/testimonial_avatars.js"></script>
-	<script src="./assets/js/script.js"></script>
+	<script src="./assets/js/init.js"></script>
+
+	<!-- Splide Core -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
+
+    <!-- Splide Auto Scroll Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
 
 	<!-- Ionic Icons -->
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

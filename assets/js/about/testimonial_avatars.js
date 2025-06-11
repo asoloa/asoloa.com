@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", () => {
+// window.addEventListener("DOMContentLoaded", () => {
   const colorMap = {};
   const testimonialItems = document.querySelectorAll(".testimonials-item");
 
@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const name = nameElement.textContent.trim();
       const initials = getInitials(name);
 
-      // Use cached color if available (to ensure smooth marquee effect)
+      // Use cached color if available (to ensure smooth effect)
       let bgColor = colorMap[name];
 
       if (!bgColor) {
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
       avatarImg.alt = `${name}'s avatar`;
     }
   });
-});
+// });
 
 function getInitials(name) {
     const initials = name
@@ -37,17 +37,17 @@ function getInitials(name) {
 };
 
 /**
- * Returns a vibrant color that contrasts well with white text.
+ * Returns a random color for the initials avatar background.
  */
 function getBGColor() {
   const vibrantColors = [
-    "#f39c12", // bright orange-yellow
-    "#e67e22", // carrot orange
-    "#d35400", // dark orange
-    "#c0392b", // strong red
-    "#8e44ad", // purple
-    "#2980b9", // blue (complementary contrast)
-    "#27ae60", // emerald green
+    "#f39c12",
+    "#e67e22",
+    "#d35400",
+    "#c0392b",
+    "#8e44ad",
+    "#2980b9",
+    "#27ae60",
   ];
   return vibrantColors[Math.floor(Math.random() * vibrantColors.length)];
 }
