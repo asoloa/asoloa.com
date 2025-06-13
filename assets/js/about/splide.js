@@ -6,9 +6,7 @@ new Splide('.testimonials-splide', {
     snap      : false,
     autoScroll: {
         speed: 0.75,
-        // pauseOnHover: false,
     },
-    // pauseOnHover: false,
     arrows: false,
     pagination: false,
 }).mount(window.splide.Extensions);
