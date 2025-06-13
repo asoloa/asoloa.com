@@ -801,13 +801,6 @@ main {
   line-height: 1.6;
 }
 
-@media (max-width: 480px) {
-  .testimonials-item {
-    /* fixed width of 300px due to flex */
-    margin-right: 8px;
-  }
-}
-
 /*-----------------------------------*\
   #RESUME
 \*-----------------------------------*/
@@ -1336,6 +1329,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
+
+/* set span to new lines on mobile */
+@media (max-width: 768px) {
+  .timeline-list h4 span, .timeline-list p span {
+    float: none;
+  }
+}
 
 /**
  * responsive larger than 450px screen
