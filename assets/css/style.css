@@ -527,6 +527,12 @@ main {
 
 .about-text p { white-space: pre-line; }
 
+.about-text p span {
+  display: inline;
+  font-weight: var(--fw-500);
+  color: var(--vegas-gold);
+}
+
 /**
  * #service 
  */
@@ -557,9 +563,17 @@ main {
   z-index: -1;
 }
 
-.service-icon-box { margin-bottom: 10px; }
+.service-icon-box {
+  display: flex;
+  margin-bottom: 10px;
+}
 
-.service-icon-box img { margin: auto; }
+.service-icon-box svg {
+  margin: auto;
+  color: var(--vegas-gold);
+  width: 40px;
+  height: 40px;
+}
 
 .service-content-box { text-align: center; }
 

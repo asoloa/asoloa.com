@@ -1,4 +1,5 @@
 const scripts = [
+  'about/services.js',
   'about/technologies.js',
   'about/testimonials.js',
   'about/testimonial_avatars.js',
