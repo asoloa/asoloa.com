@@ -37,3 +37,22 @@ tools.forEach(({ name, logo }) => {
 
   document.querySelector(".tools-grid").appendChild(div)
 });
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const items = entry.target.querySelectorAll('.tools-icon'); // Target all tools-icon elements
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('visible');
+        }, index * 100); // 150ms delay between items
+      });
+      observer.unobserve(entry.target); // Only trigger once
+    }
+  });
+}, {
+  threshold: 0.2 // Trigger when 20% of tools-grid is visible
+});
+
+// Start observing the section
+observer.observe(document.querySelector('.tools-grid'));
