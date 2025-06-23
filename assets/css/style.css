@@ -157,6 +157,36 @@ html { font-family: var(--ff-poppins); }
 
 body { background: var(--smoky-black); }
 
+.blurred {
+  filter: blur(10px);
+  pointer-events: none;
+  transition: filter 1s ease;
+}
+
+#splash {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#splash.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#splash lottie-player {
+  width: 10rem;
+  height: 10rem;
+  object-fit: contain;
+}
+
 /*-----------------------------------*\
   #REUSED STYLE
 \*-----------------------------------*/
@@ -600,6 +630,53 @@ main {
   justify-items: center;
   overflow: hidden;
   padding: 0 0 20px 0;
+}
+
+.tools-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.tools-tabs button {
+  padding: 0.5rem 1rem;
+  width: 200px;
+  background: none;
+  border: none;
+  font-size: var(--fs-8);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  color: var(--light-gray-70);
+  justify-items: center;
+  align-content: bottom;
+}
+
+.tools-tabs button.active {
+  border-color: var(--orange-yellow-crayola);
+  color: var(--orange-yellow-crayola);
+  font-weight: var(--fw-300);
+}
+
+.tools-tabs button .tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  position: inherit;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.tools-tabs button:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .tools-icon {
@@ -1363,6 +1440,20 @@ textarea.form-input::-webkit-resizer { display: none; }
     grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
     grid-auto-rows: 70px;
     gap: 1rem;
+  }
+
+  .tools-tabs button {
+    width: 150px;
+  }
+
+  .tools-tabs button .tooltip {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .tools-tabs button.show-tooltip .tooltip {
+    visibility: visible;
+    opacity: 1;
   }
 }
 

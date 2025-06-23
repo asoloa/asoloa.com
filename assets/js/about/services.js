@@ -1,8 +1,13 @@
 const services = [
   {
     name: "Infra Automation",
-    description: "I use Ansible and Terraform to spin up and manage infra — whether it’s VMs with KVM or cloud resources. Less manual config, more repeatable setups.",
+    description: "I design and implement automation solutions using Ansible and Terraform to streamline the provisioning, configuration, and deployment of systems — from simple landing sites to complex, highly available infrastructure.",
     icon: "./assets/images/icon-automation.svg"
+  },
+  {
+    name: "Scripting",
+    description: "I build custom tools using Bash, VBA, and Python to automate repetitive tasks while reducing manual effort and human error.",
+    icon: "./assets/images/icon-scripting.svg"
   },
   { 
     name: "Linux Systems Engineering",
@@ -26,7 +31,7 @@ const services = [
   },
   {
     name: "Security & Reliability Engineering",
-    description: "I implement guardrails and hardening measures (e.g. firewall rules, iptables rules, monitoring alerts, automated scans) that enhance system reliability and ensure secure operations.",
+    description: "I implement guardrails and hardening measures (e.g. firewall & iptables rules, monitoring alerts, automated scans) that enhance system reliability and ensure secure operations.",
     icon: "./assets/images/icon-support.svg"
   },
 ];

@@ -8,7 +8,7 @@
 	<title>Solomon Abejo - Personal Portfolio</title>
 
 	<!-- Logo -->
-	<link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="./assets/images/logo_512x512.png" type="image/png">
 
 	<!-- Custom Stylesheet -->
 	<link rel="stylesheet" href="./assets/css/style.css">
@@ -20,7 +20,10 @@
 </head>
 
 <body>
-	<main>
+	<div id="splash">
+		<lottie-player id="splashImg" src="./assets/images/splash.json" background="transparent" speed="1" direction="1" playMode="normal" autoplay></lottie-player>
+	</div>
+	<main class="blurred">
 		<!-- Sidebar -->
 		<aside class="sidebar" data-sidebar>
 			<div class="sidebar-info">
@@ -140,13 +143,13 @@
 					<h2 class="h2 article-title">About Sol 👨🏻‍💻</h2>
 				</header>
 				<section class="about-text">
-					<p>Hi! I am a DevOps and Cloud Engineer with 7 years of experience turning complex infrastructure problems into clean, automated solutions. I specialize in building and managing cloud-native environments using tools like <span>AWS</span>, <span>Ansible</span>, <span>Terraform</span>.
+					<p>Hi! I am a DevOps and Cloud Engineer with years of experience turning complex problems into clean, automated solutions.
 
-					I’ve worked across diverse teams in the Philippines and beyond, leading automation projects, delivering internal training sessions, and solving production issues with a mix of solid engineering and practical problem-solving. Whether it's configuring HA clusters, optimizing CI/CD pipelines, or troubleshooting a failing deployment, I enjoy digging into the details and making systems run smoothly.
+					I’ve worked across diverse teams in the Philippines and beyond, leading automation projects, delivering internal training sessions, and solving production issues with a mix of solid engineering and practical problem-solving. Whether it's configuring Linux systems & HA clusters, optimizing CI/CD pipelines, or troubleshooting a failing deployment, I enjoy digging into the details and making systems run smoothly.
 
-					Currently, I’m leveling up my Infrastructure-as-Code and serverless skills by building this very site — hosted on AWS (S3, Lambda, DynamoDB, CloudFront), deployed with Terraform, and version-controlled via GitHub Actions. This project is my sandbox for learning, experimenting, and showcasing what I can do.
+					Currently, I’m leveling up my <span>Infrastructure-as-Code</span> and serverless skills by building this very site — hosted on <span>AWS</span> (<span>S3, Lambda, DynamoDB, CloudFront</span>), deployed with <span>Terraform</span>, and version-controlled via <span>GitHub Actions</span>. This project is my sandbox for learning, experimenting, and showcasing what I can do.
 
-					When I’m not scripting or automating something, you'll probably see me tweaking a personal project, writing technical documentation, reading Xianxia/Wuxia novels, or solving Sudoku puzzles.</p>
+					When I’m not scripting or automating something, you'll probably see me tweaking a personal project, reading Xianxia/Wuxia novels, or solving Sudoku puzzles.</p>
 				</section>
 
 				<section class="service">
@@ -161,6 +164,9 @@
 					<div class="section-title-wrapper">
 						<p>🛠</p>
 						<h3 class="h3">Tools</h3>
+					</div>
+					<div class="tools-tabs">
+						<!-- This section will be populated via ./assets/js/about/technologies.js -->
 					</div>
 					<div class="tools-grid">
 						<!-- This section will be populated via ./assets/js/about/technologies.js -->
@@ -701,6 +707,8 @@
 	</main>
 
 	<!-- Custom JS -->
+	<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+	<script src="./assets/js/splash.js"></script>
 	<script src="./assets/js/init.js"></script>
 
 	<!-- Splide Core -->
