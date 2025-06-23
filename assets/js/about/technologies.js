@@ -36,10 +36,28 @@ const tools = [
   { category: [4, 3], logo: './assets/images/tech/slack.svg', name: 'Slack' },
 ];
 
+const ANIMATION_CONFIG = {
+  STAGGER_DELAY: 100, // Delay between each tool's animation in milliseconds
+  TOOLTIP_DURATION: 1500, // Tooltip duration in milliseconds
+  INTERSECTION_THRESHOLD: 0.2 // Intersection threshold for tool visibility in percentage
+};
+
 const tabsContainer = document.querySelector('.tools-tabs');
 const gridContainer = document.querySelector('.tools-grid');
 
 let activeTab = 0;
+const svgCache = new Map();
+
+// Preload SVGs once to prevent fetch delay
+function preloadSVGs() {
+  tools.forEach(({ logo }) => {
+    if (!svgCache.has(logo)) {
+      fetch(logo)
+        .then(res => res.text())
+        .then(svg => svgCache.set(logo, svg));
+    }
+  });
+}
 
 // Render category buttons
 function renderTabs() {
@@ -74,33 +92,44 @@ function renderTabs() {
         currentBtn.classList.add('show-tooltip');
         setTimeout(() => {
           currentBtn.classList.remove('show-tooltip');
-        }, 2000);
+        }, ANIMATION_CONFIG.TOOLTIP_DURATION);
       }, 0);
     });
   });
 }
 
-// Render tools into the grid
+// Render filtered tools
 function renderTools() {
   gridContainer.innerHTML = '';
+  const frag = document.createDocumentFragment();
   const filtered = tools.filter(t => t.category.includes(activeTab));
-  
+
   filtered.forEach(({ name, logo }) => {
     const div = document.createElement("div");
     div.className = "tools-icon";
 
-    fetch(logo)
-      .then(res => res.text())
-      .then(svg => {
-        div.innerHTML = svg;
-        const p = document.createElement("p");
-        p.textContent = name;
-        div.appendChild(p);
-      });
+    const injectSVG = svg => {
+      div.innerHTML = svg;
+      const p = document.createElement("p");
+      p.textContent = name;
+      div.appendChild(p);
+    };
 
-    gridContainer.appendChild(div);
+    if (svgCache.has(logo)) {
+      injectSVG(svgCache.get(logo));
+    } else {
+      fetch(logo)
+        .then(res => res.text())
+        .then(svg => {
+          svgCache.set(logo, svg);
+          injectSVG(svg);
+        });
+    }
+
+    frag.appendChild(div);
   });
 
+  gridContainer.appendChild(frag);
   observer.observe(gridContainer);
 }
 
@@ -112,13 +141,14 @@ const observer = new IntersectionObserver((entries, observer) => {
       items.forEach((item, index) => {
         setTimeout(() => {
           item.classList.add('visible');
-        }, index * 100);
+        }, index * ANIMATION_CONFIG.STAGGER_DELAY);
       });
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.2 });
+}, { threshold: ANIMATION_CONFIG.INTERSECTION_THRESHOLD });
 
 // Initial render
 renderTabs();
 renderTools();
+preloadSVGs();
