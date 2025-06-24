@@ -641,16 +641,23 @@ main {
 }
 
 .tools-tabs button {
-  padding: 0.5rem 1rem;
   width: 200px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
   background: none;
   border: none;
   font-size: var(--fs-8);
   cursor: pointer;
   border-bottom: 2px solid transparent;
   color: var(--light-gray-70);
-  justify-items: center;
-  align-content: bottom;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .tools-tabs button.active {
@@ -660,23 +667,29 @@ main {
 }
 
 .tools-tabs button .tooltip {
+  position: absolute;
+  bottom: 2rem;
   visibility: hidden;
+  opacity: 0;
   background-color: #333;
   color: #fff;
   font-size: 0.75rem;
   text-align: center;
   padding: 4px 8px;
   border-radius: 4px;
-  position: inherit;
-  white-space: nowrap;
-  opacity: 0;
+  white-space: normal;
+  max-width: 300px;
   pointer-events: none;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+.tools-tabs button span {
+  text-align: center;
+}
+
 .tools-tabs button:hover .tooltip {
   visibility: visible;
-  opacity: 1;
+  opacity: 75%;
 }
 
 .tools-icon {
@@ -1447,13 +1460,14 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .tools-tabs button .tooltip {
+    bottom: 2.5rem;
     visibility: hidden;
     opacity: 0;
   }
 
   .tools-tabs button.show-tooltip .tooltip {
     visibility: visible;
-    opacity: 1;
+    opacity: 75%;
   }
 }
 

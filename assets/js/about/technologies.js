@@ -1,39 +1,50 @@
 const categories = [
-  { label: 'Infrastructure', tooltip: 'Infrastructure & DevOps' },
-  { label: 'Containers', tooltip: 'Containers & Orchestration' },
-  { label: 'Development', tooltip: 'Dev & Scripting' },
-  { label: 'Collaboration', tooltip: 'Collaboration & Lifecycle' },
-  { label: 'Messaging', tooltip: 'Messaging & Telephony' }
-]
+  { label: 'Cloud & Infra', tooltip: 'Cloud Platforms, Virtualization, and Provisioning' },
+  { label: 'Containers & Orchestration', tooltip: 'Containerization, Orchestration, and Platform Services' },
+  { label: 'Languages & Runtime', tooltip: 'Programming Languages, Runtime, and Scripting' },
+  { label: 'Databases & Storage', tooltip: 'Relational and Non-Relational Data Stores' },
+  { label: 'CI/CD & Automation', tooltip: 'Pipelines, IaC, Build Tools, and Automation' },
+  { label: 'Source & Project Management', tooltip: 'Version Control, Issue Tracking, Planning' },
+  { label: 'Monitoring & Communication', tooltip: 'ChatOps, Alerts, Telephony, Messaging' }
+];
 const tools = [
-  // 0 - Infra & DevOps
-  { category: [0], logo: './assets/images/tech/ansible.svg', name: 'Ansible' },
-  { category: [0], logo: './assets/images/tech/aws.svg', name: 'AWS' },
+  // Cloud & Infra
+  { category: [0, 4], logo: './assets/images/tech/ansible.svg', name: 'Ansible' },
+  { category: [0, 4], logo: './assets/images/tech/aws.svg', name: 'AWS' },
+  { category: [0, 2], logo: './assets/images/tech/bash.svg', name: 'Bash' },
   { category: [0], logo: './assets/images/tech/linux.svg', name: 'Linux' },
   { category: [0], logo: './assets/images/tech/linode.svg', name: 'Linode' },
   { category: [0], logo: './assets/images/tech/openstack.svg', name: 'OpenStack' },
-  { category: [0, 1], logo: './assets/images/tech/openshift.svg', name: 'OpenShift' },
+  { category: [0, 1, 4], logo: './assets/images/tech/openshift.svg', name: 'OpenShift' },
   { category: [0], logo: './assets/images/tech/vagrant.svg', name: 'Vagrant' },
-  { category: [0], logo: './assets/images/tech/terraform.svg', name: 'Terraform' },
-  // 1 - Containers
-  { category: [1, 2], logo: './assets/images/tech/docker.svg', name: 'Docker' },
-  { category: [1, 2], logo: './assets/images/tech/kubernetes.svg', name: 'Kubernetes' },
-  // 2 - Development
+  { category: [0, 4], logo: './assets/images/tech/terraform.svg', name: 'Terraform' },
+
+  // Containers & Orchestration
+  { category: [1, 2, 4], logo: './assets/images/tech/docker.svg', name: 'Docker' },
+  { category: [1, 4], logo: './assets/images/tech/kubernetes.svg', name: 'Kubernetes' },
+
+  // Languages & Runtime
   { category: [2], logo: './assets/images/tech/excel.svg', name: 'Excel VBA' },
   { category: [2], logo: './assets/images/tech/java.svg', name: 'Java' },
-  { category: [2], logo: './assets/images/tech/mysql.svg', name: 'MySQL' },
   { category: [2], logo: './assets/images/tech/php.svg', name: 'PHP' },
   { category: [2], logo: './assets/images/tech/vuejs.svg', name: 'VueJS' },
-  // 3 - Version Control & Collab
-  { category: [3, 2, 0], logo: './assets/images/tech/git.svg', name: 'Git' },
-  { category: [3, 2, 0], logo: './assets/images/tech/github.svg', name: 'GitHub' },
-  { category: [3, 2, 0], logo: './assets/images/tech/gitlab.svg', name: 'GitLab' },
-  { category: [3, 2], logo: './assets/images/tech/jira.svg', name: 'Jira' },
-  { category: [3, 2], logo: './assets/images/tech/redmine.svg', name: 'Redmine' },
-  // 4 - Comms & Messaging
-  { category: [4], logo: './assets/images/tech/asterisk.svg', name: 'Asterisk' },
-  { category: [4, 2], logo: './assets/images/tech/sendgrid.svg', name: 'SendGrid' },
-  { category: [4, 3], logo: './assets/images/tech/slack.svg', name: 'Slack' },
+
+  // Databases & Storage
+  { category: [2, 3], logo: './assets/images/tech/mysql.svg', name: 'MySQL' },
+
+  // CI/CD & Automation
+  { category: [4, 5, 0], logo: './assets/images/tech/git.svg', name: 'Git' },
+  { category: [4, 5, 0], logo: './assets/images/tech/github.svg', name: 'GitHub' },
+  { category: [4, 5, 0], logo: './assets/images/tech/gitlab.svg', name: 'GitLab' },
+
+  // Source & Project Management
+  { category: [5], logo: './assets/images/tech/jira.svg', name: 'Jira' },
+  { category: [5], logo: './assets/images/tech/redmine.svg', name: 'Redmine' },
+
+  // Monitoring & Communication
+  { category: [6], logo: './assets/images/tech/asterisk.svg', name: 'Asterisk' },
+  { category: [6, 2], logo: './assets/images/tech/sendgrid.svg', name: 'SendGrid' },
+  { category: [6, 5], logo: './assets/images/tech/slack.svg', name: 'Slack' }
 ];
 
 const ANIMATION_CONFIG = {
@@ -81,6 +92,7 @@ function renderTabs() {
     tabsContainer.appendChild(btn);
 
     btn.addEventListener('click', () => {
+      if (activeTab === index) return;  // Skip if active tab is clicked again
       activeTab = index;
 
       // Re-render tabs and tools
