@@ -7,11 +7,11 @@ const categories = [
   { label: 'Source & Project Management', tooltip: 'Version Control, Issue Tracking, Planning' },
   { label: 'Monitoring & Communication', tooltip: 'ChatOps, Alerts, Telephony, Messaging' }
 ];
-const tools = [
+const tools = [ // TODO: Break AWS into separate services/tools
   // Cloud & Infra
   { category: [0, 4], logo: './assets/images/tech/ansible.svg', name: 'Ansible' },
   { category: [0, 4], logo: './assets/images/tech/aws.svg', name: 'AWS' },
-  { category: [0, 2], logo: './assets/images/tech/bash.svg', name: 'Bash' },
+  { category: [0, 2, 4], logo: './assets/images/tech/bash.svg', name: 'Bash' },
   { category: [0], logo: './assets/images/tech/linux.svg', name: 'Linux' },
   { category: [0], logo: './assets/images/tech/linode.svg', name: 'Linode' },
   { category: [0], logo: './assets/images/tech/openstack.svg', name: 'OpenStack' },
@@ -130,6 +130,8 @@ function renderTools() {
     if (svgCache.has(logo)) {
       injectSVG(svgCache.get(logo));
     } else {
+      // DEAD / REDUNDANT CODE: SVGs are preloaded
+      // TODO: Confirm if removing this block is safe.
       fetch(logo)
         .then(res => res.text())
         .then(svg => {
