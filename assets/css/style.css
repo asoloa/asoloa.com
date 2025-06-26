@@ -182,8 +182,8 @@ body { background: var(--smoky-black); }
 }
 
 #splash lottie-player {
-  width: 10rem;
-  height: 10rem;
+  width: 7.5rem;
+  height: 7.5rem;
   object-fit: contain;
 }
 
@@ -626,7 +626,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   grid-auto-rows: 80px;
-  gap: 1.5rem;
+  gap: 1rem;
   justify-items: center;
   overflow: hidden;
   padding: 0 0 20px 0;
@@ -708,8 +708,8 @@ main {
 
 .tools-icon svg {
   fill: #FAFAFA;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.25rem;
+  height: 2.25rem;
   
 }
 
@@ -717,6 +717,7 @@ main {
   font-size: var(--fs-8);
   color: var(--light-gray-70);
   font-weight: var(--fw-300);
+  text-align: center;
 }
 
 .tools-icon:hover svg,
@@ -1454,9 +1455,12 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .tools-grid {
-    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-    grid-auto-rows: 70px;
     gap: 1rem;
+  }
+
+  .tools-icon svg {
+    width: 2.15rem;
+    height: 2.15rem;
   }
 
   .tools-tabs button {

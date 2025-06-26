@@ -4,13 +4,35 @@ const categories = [
   { label: 'Languages & Runtime', tooltip: 'Programming Languages, Runtime, and Scripting' },
   { label: 'Databases & Storage', tooltip: 'Relational and Non-Relational Data Stores' },
   { label: 'CI/CD & Automation', tooltip: 'Pipelines, IaC, Build Tools, and Automation' },
-  { label: 'Source & Project Management', tooltip: 'Version Control, Issue Tracking, Planning' },
-  { label: 'Monitoring & Communication', tooltip: 'ChatOps, Alerts, Telephony, Messaging' }
+  { label: 'Source & Project Management', tooltip: 'Version Control, Issue Tracking, and Planning' },
+  { label: 'Monitoring & Communication', tooltip: 'ChatOps, Alerts, Telephony, and Messaging' }
 ];
-const tools = [ // TODO: Break AWS into separate services/tools
+const tools = [
+  // 0: 'Cloud & Infra' >> 'Cloud Platforms, Virtualization, and Provisioning'
+  // 1: 'Containers & Orchestration' >> 'Containerization, Orchestration, and Platform Services'
+  // 2: 'Languages & Runtime' >> 'Programming Languages, Runtime, and Scripting'
+  // 3: 'Databases & Storage' >> 'Relational and Non-Relational Data Stores'
+  // 4: 'CI/CD & Automation' >> 'Pipelines, IaC, Build Tools, and Automation'
+  // 5: 'Source & Project Management' >> 'Version Control, Issue Tracking, and Planning'
+  // 6: 'Monitoring & Communication' >> 'ChatOps, Alerts, Telephony, and Messaging'
+
+  // AWS Services
+  { category: [0, 1], logo: './assets/images/tech/aws_apigateway.svg', name: 'Amazon API Gateway' },
+  { category: [0], logo: './assets/images/tech/aws_cloudfront.svg', name: 'Amazon CloudFront' },
+  { category: [4, 6], logo: './assets/images/tech/aws_cloudwatch.svg', name: 'Amazon CloudWatch' },
+  { category: [3], logo: './assets/images/tech/aws_dynamodb.svg', name: 'Amazon DynamoDB' },
+  { category: [0], logo: './assets/images/tech/aws_ec2.svg', name: 'Amazon EC2' },
+  { category: [6], logo: './assets/images/tech/aws_guardduty.svg', name: 'Amazon GuardDuty' },
+  { category: [3, 4], logo: './assets/images/tech/aws_rds.svg', name: 'Amazon RDS' },
+  { category: [0, 3], logo: './assets/images/tech/aws_s3.svg', name: 'Amazon S3' },
+  { category: [0], logo: './assets/images/tech/aws_vpc.svg', name: 'Amazon VPC' },
+  { category: [0, 4], logo: './assets/images/tech/aws_acm.svg', name: 'AWS Cert Manager' },
+  { category: [3, 4], logo: './assets/images/tech/aws_dms.svg', name: 'AWS DMS' },
+  { category: [0], logo: './assets/images/tech/aws_iam.svg', name: 'AWS IAM' },
+  { category: [0, 2, 4], logo: './assets/images/tech/aws_lambda.svg', name: 'AWS Lambda' },
+
   // Cloud & Infra
   { category: [0, 4], logo: './assets/images/tech/ansible.svg', name: 'Ansible' },
-  { category: [0, 4], logo: './assets/images/tech/aws.svg', name: 'AWS' },
   { category: [0, 2, 4], logo: './assets/images/tech/bash.svg', name: 'Bash' },
   { category: [0], logo: './assets/images/tech/linux.svg', name: 'Linux' },
   { category: [0], logo: './assets/images/tech/linode.svg', name: 'Linode' },
@@ -61,13 +83,19 @@ const svgCache = new Map();
 
 // Preload SVGs once to prevent fetch delay
 function preloadSVGs() {
-  tools.forEach(({ logo }) => {
+  const fetchPromises = tools.map(({ logo }) => {
     if (!svgCache.has(logo)) {
-      fetch(logo)
+      return fetch(logo)
         .then(res => res.text())
-        .then(svg => svgCache.set(logo, svg));
+        .then(svg => svgCache.set(logo, svg))
+        .catch(err => {
+          console.error(`Failed to load SVG: ${logo}`, err)
+        });
     }
+    return Promise.resolve(); // SVG already cached
   });
+
+  return Promise.all(fetchPromises);
 }
 
 // Render category buttons
@@ -127,17 +155,11 @@ function renderTools() {
       div.appendChild(p);
     };
 
-    if (svgCache.has(logo)) {
-      injectSVG(svgCache.get(logo));
+    const svg = svgCache.get(logo);
+    if (svg) {
+      injectSVG(svg);
     } else {
-      // DEAD / REDUNDANT CODE: SVGs are preloaded
-      // TODO: Confirm if removing this block is safe.
-      fetch(logo)
-        .then(res => res.text())
-        .then(svg => {
-          svgCache.set(logo, svg);
-          injectSVG(svg);
-        });
+      console.warn(`Missing SVG for ${logo}`);
     }
 
     frag.appendChild(div);
@@ -164,5 +186,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 // Initial render
 renderTabs();
-renderTools();
-preloadSVGs();
+preloadSVGs().then(() => {
+  // Wait for all SVGs to be preloaded before calling renderTools()
+  renderTools();
+});
