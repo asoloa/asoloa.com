@@ -710,7 +710,8 @@ main {
   fill: #FAFAFA;
   width: 2.25rem;
   height: 2.25rem;
-  
+  display: block;
+  margin-bottom: 10px;
 }
 
 .tools-icon p {
