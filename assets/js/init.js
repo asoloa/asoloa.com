@@ -5,6 +5,9 @@ const scripts = [
   'about/testimonials.js',
   'about/testimonial_avatars.js',
   'about/splide.js',
+  'resume/experiences.js',
+  'resume/certifications.js',
+  'resume/education.js',
 ];
 
 function loadScript(src) {

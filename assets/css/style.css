@@ -931,7 +931,10 @@ main {
  * education and experience 
  */
 
-.timeline { margin-bottom: 50px; }
+.timeline { margin-bottom: 30px; }
+
+#certification,
+#education { margin-bottom: 50px; }
 
 .timeline .title-wrapper {
   display: flex;
