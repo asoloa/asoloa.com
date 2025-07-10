@@ -1,0 +1,33 @@
+---
+
+name : Upload Repo updates to S3 Bucket
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
+
+jobs:
+  s3_sync:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.IAM_ROLE }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Sync repo to S3 bucket using Ansible
+        run: |
+          ansible localhost -c local -e "ansible_python_interpreter=/usr/bin/python3.12" -m community.aws.s3_sync \
+          -a 'bucket=${{ secrets.S3_SITE_BUCKET }} file_root="." file_change_strategy="checksum" exclude=".git*" delete=true' -vv
+
+      - name: Invalidate CloudFront distribution
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths '/*'
