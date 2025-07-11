@@ -27,13 +27,20 @@ jobs:
       - name: Remove .git* files from cloned repo before syncing to S3 bucket
         run: rm -rf .git*
 
-      - name: Sync repo to S3 bucket using Ansible
+      # In order for s3_sync's `delete` to not delete the TF-generated view-count.js file (which is not in our repo)
+      # and the index.html file (which was updated by Terraform to import the view-count.js file),
+      # we must first download them from the S3 bucket before we sync the cloned repo.
+      - name: Download TF-generated JS & sync repo to S3 bucket using Ansible
         id: s3_sync
         run: |
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/view-count.js ./assets/js/view-count.js
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/index.html ./assets/js/index.html
           ansible localhost -c local -e "ansible_python_interpreter=/usr/bin/python3.12" -m community.aws.s3_sync \
           -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root='.' file_change_strategy='checksum' delete=true" | tee /tmp/ansible.log
+          set +e
           grep -E '^\s+\"uploads\":\s+\[\]$' /tmp/ansible.log
           echo "uploaded=$(echo $?)" >> $GITHUB_OUTPUT
+          set -e
 
 
       - name: Invalidate CloudFront distribution if there are newly uploaded files
