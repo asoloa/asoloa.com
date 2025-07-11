@@ -24,10 +24,13 @@ jobs:
           role-to-assume: ${{ secrets.IAM_ROLE }}
           aws-region: ${{ vars.AWS_REGION }}
 
+      - name: Remove .git* files from cloned repo before syncing to S3 bucket
+        run: rm -rf .git*
+
       - name: Sync repo to S3 bucket using Ansible
         run: |
           ansible localhost -c local -e "ansible_python_interpreter=/usr/bin/python3.12" -m community.aws.s3_sync \
-          -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root=\".\" file_change_strategy=\"checksum\" exclude=\".git/*,.git,.gitignore,.gitattributes,.github/*,.github\" delete=true" -vv
+          -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root='.' file_change_strategy='checksum' delete=true"
 
       - name: Invalidate CloudFront distribution
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths '/*'
