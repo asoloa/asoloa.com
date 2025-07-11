@@ -28,9 +28,14 @@ jobs:
         run: rm -rf .git*
 
       - name: Sync repo to S3 bucket using Ansible
+        id: s3_sync
         run: |
           ansible localhost -c local -e "ansible_python_interpreter=/usr/bin/python3.12" -m community.aws.s3_sync \
-          -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root='.' file_change_strategy='checksum' delete=true"
+          -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root='.' file_change_strategy='checksum' delete=true" | tee /tmp/ansible.log
+          grep -E '^\s+\"uploads\":\s+\[\]$' /tmp/ansible.log
+          echo "uploaded=$(echo $?)" >> $GITHUB_OUTPUT
 
-      - name: Invalidate CloudFront distribution
+
+      - name: Invalidate CloudFront distribution if there are newly uploaded files
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths '/*'
+        if: steps.s3_sync.outputs.uploaded == '1'
