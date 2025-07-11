@@ -34,7 +34,7 @@ jobs:
         id: s3_sync
         run: |
           aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/view-count.js ./assets/js/view-count.js
-          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/index.html ./assets/js/index.html
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/index.html index.html
           ansible localhost -c local -e "ansible_python_interpreter=/usr/bin/python3.12" -m community.aws.s3_sync \
           -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root='.' file_change_strategy='checksum' delete=true" | tee /tmp/ansible.log
           set +e
