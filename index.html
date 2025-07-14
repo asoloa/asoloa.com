@@ -59,15 +59,6 @@
 					</li>
 					<li class="contact-item">
 						<div class="icon-box">
-							<i width="20" height="20" data-lucide="mail"></i>
-						</div>
-						<div class="contact-info">
-							<p class="contact-title">Email</p>
-							<a href="mailto:abejo.solo@gmail.com" class="block text-white-2 text-sm font-light truncate hover:text-orange-yellow-crayola transition-colors">abejo.solo@gmail.com</a>
-						</div>
-					</li>
-					<li class="contact-item">
-						<div class="icon-box">
 							<i width="20" height="20" data-lucide="linkedin"></i>
 						</div>
 						<div class="contact-info">
@@ -100,6 +91,11 @@
 				<div class="separator"></div>
 
 				<ul class="social-list">
+					<li class="social-item">
+						<a href="mailto:abejo.solo@gmail.com" target="_blank" class="social-link hover:scale-110 hover:text-orange-yellow-crayola">
+							<i width="18" height="18" data-lucide="mail"></i>
+						</a>
+					</li>
 					<li class="social-item">
 						<a href="https://www.linkedin.com/in/abejo-solomon/" target="_blank" class="social-link hover:scale-110 hover:text-orange-yellow-crayola">
 							<i width="18" height="18" data-lucide="linkedin"></i>
@@ -143,13 +139,17 @@
 					<h2 class="h2 article-title">About Sol 👨🏻‍💻</h2>
 				</header>
 				<section class="about-text">
-					<p>Hi! I am a DevOps and Cloud Engineer with years of experience turning complex problems into clean, automated solutions.
+					<p>Ayo! I am a DevOps and Cloud Engineer with years of experience turning complex problems into clean, automated solutions.
 
 					I’ve worked across diverse teams in the Philippines and beyond, leading automation projects, delivering internal training sessions, and solving production issues with a mix of solid engineering and practical problem-solving. Whether it's configuring Linux systems & HA clusters, optimizing CI/CD pipelines, or troubleshooting a failing deployment, I enjoy digging into the details and making systems run smoothly.
 
-					Currently, I’m leveling up my <span>Infrastructure-as-Code</span> and serverless skills by building this very site — hosted on <span>AWS</span> (<span>S3, Lambda, DynamoDB, CloudFront</span>), deployed with <span>Terraform</span>, and version-controlled via <span>GitHub Actions</span>. This project is my sandbox for learning, experimenting, and showcasing what I can do.
+					Building this site has been a fun way to grow my skills with <span>Infrastructure-as-Code</span> and serverless architecture. Everything runs in the cloud: <span>Amazon S3</span> hosts the site assets; <span>AWS Lambda</span> handles the view counter logic; <span>Amazon DynamoDB</span> stores the view data; <span>Amazon CloudFront</span> delivers content globally; <span>AWS IAM</span> manages access and control; and <span>AWS Certificate Manager</span> keeps the custom domain secure with HTTPS. I used <span>Terraform</span> to automate and manage the infrastructure, <span>GitHub</span> to manage the code, and <span>GitHub Actions</span> to deploy changes automatically with help from <span>AWS CLI</span> and <span>Ansible</span>.
+					
+					Check out the repo on <a href="https://github.com/asoloa/asoloa.com" target="_blank">asoloa/asoloa.com</a> and <a href="https://github.com/asoloa/asoloa.com.tf" target="_blank">asoloa/asoloa.com.tf</a>  to see how it all works.
+					
+					Every part of this project reflects my approach to learning: through hands-on work, curious experimentation, learning from mistakes, and a constant drive to improve. In the next iteration, I'm planning to convert this into a <span>React</span> or <span>VueJS</span> app, and I'm excited to see how this project evolves. 🤞
 
-					When I’m not scripting or automating something, you'll probably see me tweaking a personal project, reading Xianxia/Wuxia novels, or solving Sudoku puzzles.</p>
+					When I’m not scripting or automating something, you'll probably see me overdosing on coffee, reading Xianxia/Wuxia novels, or solving Sudoku puzzles.</p>
 				</section>
 
 				<section class="service">
@@ -568,17 +568,18 @@
 		</div>
 	</main>
 
-	<!-- Custom JS -->
+	<!-- Lottie Player -->
 	<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.12/dist/lottie-player.js"></script>
+
+	<!-- Custom JS -->
 	<script src="./assets/js/splash.js"></script>
 	<script src="./assets/js/init.js"></script>
 
 	<!-- Splide Core -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
-
-    <!-- Splide Auto Scroll Plugin -->
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
+	<!-- Splide Auto Scroll Plugin -->
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"></script>
 
 	<!-- Ionic Icons -->
 	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
