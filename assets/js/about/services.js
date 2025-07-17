@@ -1,18 +1,13 @@
 const services = [
   {
     name: "Infra Automation",
-    description: "I design and implement automation solutions using Ansible and Terraform to streamline the provisioning, configuration, and deployment of systems — from simple landing sites to complex, highly available infrastructure.",
+    description: "I design and implement automation solutions using Ansible and Terraform to streamline the provisioning, configuration, and deployment of systems.",
     icon: "./assets/images/icon-automation.svg"
   },
   {
     name: "Scripting",
-    description: "I build custom tools using Bash, VBA, and Python to automate repetitive tasks while reducing manual effort and human error.",
+    description: "I build custom tools using Bash and VBA to automate repetitive tasks, reducing manual effort and human error.",
     icon: "./assets/images/icon-scripting.svg"
-  },
-  { 
-    name: "Linux Systems Engineering",
-    description: "I configure, maintain, and optimize Linux-based environments, ensuring secure, stable, and efficient operations across development and production systems.",
-    icon: "./assets/images/icon-linux.svg"
   },
   { 
     name: "DevOps Practices",
@@ -20,19 +15,9 @@ const services = [
     icon: "./assets/images/icon-devops.svg"
   },
   {
-    name: "Web Applications Support",
-    description: "I manage and troubleshoot multi-stack client environments, including CRMs built on VueJS, Laravel, and MySQL, ensuring high availability and performance.",
-    icon: "./assets/images/icon-support.svg"
-  },
-  {
     name: "Documentation & Knowledge Sharing",
-    description: "I create clear, concise internal documentation to ensure knowledge transfer, maintainability, and smoother onboarding for team members.",
+    description: "I create clear, concise internal documentation to ensure effective knowledge transfer and smoother onboarding of team members.",
     icon: "./assets/images/icon-documentation.svg"
-  },
-  {
-    name: "Security & Reliability Engineering",
-    description: "I implement guardrails and hardening measures (e.g. firewall & iptables rules, monitoring alerts, automated scans) that enhance system reliability and ensure secure operations.",
-    icon: "./assets/images/icon-support.svg"
   },
 ];
 

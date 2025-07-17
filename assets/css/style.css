@@ -172,13 +172,6 @@ body { background: var(--smoky-black); }
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  opacity: 0;
-  visibility: hidden;
-}
-
-#splash.visible {
-  opacity: 1;
-  visibility: visible;
 }
 
 #splash lottie-player {

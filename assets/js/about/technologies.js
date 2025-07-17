@@ -5,7 +5,8 @@ const categories = [
   { label: 'Databases & Storage', tooltip: 'Relational and Non-Relational Data Stores' },
   { label: 'CI/CD & Automation', tooltip: 'Pipelines, IaC, Build Tools, and Automation' },
   { label: 'Source & Project Management', tooltip: 'Version Control, Issue Tracking, and Planning' },
-  { label: 'Monitoring & Communication', tooltip: 'ChatOps, Alerts, Telephony, and Messaging' }
+  { label: 'Monitoring & Communication', tooltip: 'ChatOps, Alerts, Telephony, and Messaging' },
+  { label: 'asoloa.com Stack', tooltip: 'Tech Stack of asoloa.com' }
 ];
 const tools = [
   // 0: 'Cloud & Infra' >> 'Cloud Platforms, Virtualization, and Provisioning'
@@ -18,28 +19,28 @@ const tools = [
 
   // AWS Services
   { category: [0, 1], logo: './assets/images/tech/aws_apigateway.svg', name: 'Amazon API Gateway' },
-  { category: [0], logo: './assets/images/tech/aws_cloudfront.svg', name: 'Amazon CloudFront' },
+  { category: [0, 7], logo: './assets/images/tech/aws_cloudfront.svg', name: 'Amazon CloudFront' },
   { category: [4, 6], logo: './assets/images/tech/aws_cloudwatch.svg', name: 'Amazon CloudWatch' },
-  { category: [3], logo: './assets/images/tech/aws_dynamodb.svg', name: 'Amazon DynamoDB' },
+  { category: [3, 7], logo: './assets/images/tech/aws_dynamodb.svg', name: 'Amazon DynamoDB' },
   { category: [0], logo: './assets/images/tech/aws_ec2.svg', name: 'Amazon EC2' },
   { category: [6], logo: './assets/images/tech/aws_guardduty.svg', name: 'Amazon GuardDuty' },
   { category: [3, 4], logo: './assets/images/tech/aws_rds.svg', name: 'Amazon RDS' },
-  { category: [0, 3], logo: './assets/images/tech/aws_s3.svg', name: 'Amazon S3' },
+  { category: [0, 3, 7], logo: './assets/images/tech/aws_s3.svg', name: 'Amazon S3' },
   { category: [0], logo: './assets/images/tech/aws_vpc.svg', name: 'Amazon VPC' },
-  { category: [0, 4], logo: './assets/images/tech/aws_acm.svg', name: 'AWS Cert Manager' },
+  { category: [0, 4, 7], logo: './assets/images/tech/aws_acm.svg', name: 'AWS Cert Manager' },
   { category: [3, 4], logo: './assets/images/tech/aws_dms.svg', name: 'AWS DMS' },
-  { category: [0], logo: './assets/images/tech/aws_iam.svg', name: 'AWS IAM' },
-  { category: [0, 2, 4], logo: './assets/images/tech/aws_lambda.svg', name: 'AWS Lambda' },
+  { category: [0, 7], logo: './assets/images/tech/aws_iam.svg', name: 'AWS IAM' },
+  { category: [0, 2, 4, 7], logo: './assets/images/tech/aws_lambda.svg', name: 'AWS Lambda' },
 
   // Cloud & Infra
-  { category: [0, 4], logo: './assets/images/tech/ansible.svg', name: 'Ansible' },
-  { category: [0, 2, 4], logo: './assets/images/tech/bash.svg', name: 'Bash' },
-  { category: [0], logo: './assets/images/tech/linux.svg', name: 'Linux' },
+  { category: [0, 4, 7], logo: './assets/images/tech/ansible.svg', name: 'Ansible' },
+  { category: [0, 2, 4, 7], logo: './assets/images/tech/bash.svg', name: 'Bash' },
+  { category: [0, 7], logo: './assets/images/tech/linux.svg', name: 'Linux' },
   { category: [0], logo: './assets/images/tech/linode.svg', name: 'Linode' },
   { category: [0], logo: './assets/images/tech/openstack.svg', name: 'OpenStack' },
   { category: [0, 1, 4], logo: './assets/images/tech/openshift.svg', name: 'OpenShift' },
   { category: [0], logo: './assets/images/tech/vagrant.svg', name: 'Vagrant' },
-  { category: [0, 4], logo: './assets/images/tech/terraform.svg', name: 'Terraform' },
+  { category: [0, 4, 7], logo: './assets/images/tech/terraform.svg', name: 'Terraform' },
 
   // Containers & Orchestration
   { category: [1, 2, 4], logo: './assets/images/tech/docker.svg', name: 'Docker' },
@@ -55,8 +56,9 @@ const tools = [
   { category: [2, 3], logo: './assets/images/tech/mysql.svg', name: 'MySQL' },
 
   // CI/CD & Automation
-  { category: [4, 5, 0], logo: './assets/images/tech/git.svg', name: 'Git' },
-  { category: [4, 5, 0], logo: './assets/images/tech/github.svg', name: 'GitHub' },
+  { category: [4, 5, 0, 7], logo: './assets/images/tech/git.svg', name: 'Git' },
+  { category: [4, 5, 0, 7], logo: './assets/images/tech/github.svg', name: 'GitHub' },
+  { category: [4, 7], logo: './assets/images/tech/gh-actions.svg', name: 'GitHub Actions' },
   { category: [4, 5, 0], logo: './assets/images/tech/gitlab.svg', name: 'GitLab' },
 
   // Source & Project Management
