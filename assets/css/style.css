@@ -563,6 +563,18 @@ main {
   color: var(--vegas-gold);
 }
 
+.about-text p a {
+  display: inline;
+  font-weight: var(--fw-500);
+  font-style: italic;
+  color: var(--vegas-gold);
+}
+
+.about-text p a:hover {
+  color: var(--orange-yellow-crayola);
+  text-decoration: underline;
+}
+
 /**
  * #service 
  */
@@ -2079,7 +2091,7 @@ textarea.form-input::-webkit-resizer { display: none; }
     max-height: max-content;
     height: 100%;
     margin-bottom: 0;
-    padding-top: 60px;
+    /* padding-top: 60px; */
     z-index: 1;
   }
 

@@ -1,5 +1,4 @@
 const scripts = [
-  // 'splash.js',
   'about/services.js',
   'about/technologies.js',
   'about/testimonials.js',
