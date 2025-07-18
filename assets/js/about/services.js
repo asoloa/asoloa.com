@@ -6,7 +6,7 @@ const services = [
   },
   {
     name: "Scripting",
-    description: "I build custom tools using Bash and VBA to automate repetitive tasks, reducing manual effort and human error.",
+    description: "I develop targeted tools using Bash and VBA to automate multiple repetitive tasks that could help people focus on more important things.",
     icon: "./assets/images/icon-scripting.svg"
   },
   { 

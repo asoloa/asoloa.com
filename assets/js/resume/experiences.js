@@ -9,7 +9,7 @@ const experiences = [
             'Developed and maintained Ansible roles to automate the setup and configuration of proprietary HA cluster applications',
             'Conducted Ansible trainings to our Service Line\'s multiple divisions and teams to raise overall technical maturity',
             'Created comprehensive and meticulous technical documentation detailing the logic and process flows of Ansible playbooks and roles for the consumption of our Japanese counterparts',
-            'Built Excel VBA tools integrated with REST APIs to query OpenStack/OpenShift usage, enabling usage-based billing and audit tracking',
+            'Built Excel VBA tools initially integrated with REST APIs to query OpenStack/OpenShift usage, then switched to parsing text files containing usage data, enabling usage-based billing',
             'Built a self-initiated Excel VBA solution that transformed SAP-exported timesheets into a calendar format, improving managerial oversight and increasing trust in reported work hours',
             'Awarded The Best Performer Award for outstanding technical execution and delivery results within our Global Delivery Unit, spanning China, India, Malaysia, and the Philippines',
             'Consistently received high ratings on Partner Performance Reviews for exemplary project performance and customer satisfaction'
@@ -17,7 +17,7 @@ const experiences = [
         tools: 'Ansible, Linux, Git, Bash, RegEx, Excel VBA, OpenStack, OpenShift',
     },
     {
-        company: 'Nexus Corporation',
+        company: 'Lanex Corporation',
         location: ' 📍 Cebu City, Philippines',
         position: 'DevOps Engineer',
         period: '🗓️ APR 2021 - DEC 2021',
