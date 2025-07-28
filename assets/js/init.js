@@ -1,5 +1,4 @@
 const scripts = [
-  'about/services.js',
   'about/technologies.js',
   'about/testimonials.js',
   'about/testimonial_avatars.js',
@@ -16,7 +15,7 @@ function loadScript(src) {
     s.type = 'text/javascript';
     s.onload = () => resolve(src);
     s.onerror = () => reject(new Error(`Failed to load: ${src}`));
-    document.head.appendChild(s);
+    document.body.appendChild(s);
   });
 }
 
@@ -28,6 +27,7 @@ async function initialize() {
     }
 
     await loadScript('script.js');
+    removeSplash();
   } catch (err) {
     console.error(err);
   }
@@ -36,3 +36,10 @@ async function initialize() {
 document.addEventListener("DOMContentLoaded", function(event) {
   initialize();
 });
+
+function removeSplash() {
+  setTimeout(() => {
+      document.getElementById("splash").remove();
+      document.querySelector('main').classList.remove("blurred");
+  }, 1600);
+}

@@ -174,7 +174,7 @@ body { background: var(--smoky-black); }
   z-index: 9999;
 }
 
-#splash lottie-player {
+#splash img {
   width: 7.5rem;
   height: 7.5rem;
   object-fit: contain;
