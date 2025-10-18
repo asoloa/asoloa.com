@@ -16,7 +16,7 @@ const experiences = [
         tools: 'Ansible, Linux, Git, Bash, RegEx, Excel VBA, OpenStack, OpenShift',
     },
     {
-        company: 'NexUS Corporation',
+        company: 'Lanex Philippines',
         location: ' 📍 Cebu City, Philippines',
         position: 'DevOps Engineer',
         period: '🗓️ APR 2021 - DEC 2021',
