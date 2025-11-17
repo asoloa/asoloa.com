@@ -1045,6 +1045,10 @@ main {
     font-size: .875rem;
     line-height: 1.25rem;
 }
+.text-xsm {
+    font-size: .75rem;
+    line-height: 1.25rem;
+}
 
 .truncate, .whitespace-nowrap {
     white-space: nowrap;
