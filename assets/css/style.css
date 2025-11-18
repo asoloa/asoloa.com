@@ -334,12 +334,15 @@ article.active {
 
 main {
   margin: 15px 12px;
-  margin-bottom: 75px;
   min-width: 259px;
 }
 
-
-
+.footer {
+    color: var(--light-gray-70);
+    text-align: left;
+    position: relative;
+    margin: 25px 0px 75px 25px;
+}
 
 
 /*-----------------------------------*\
@@ -1582,9 +1585,8 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   main {
     margin-top: 60px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
-
 
 
   /**
@@ -1950,6 +1952,10 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: max-content;
     margin: auto;
   }
+
+  .footer {
+    margin-bottom: 20px;
+}
 
 
 

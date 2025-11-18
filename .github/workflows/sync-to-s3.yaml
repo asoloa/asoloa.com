@@ -46,7 +46,7 @@ jobs:
 
       - name: Modify last-update-time element in index.html & invalidate CloudFront distribution if there are newly uploaded files
         run: |
-          sed -Ei "s/(\<span id=\"last-updated-time\" style=\"display: inline-block;\">).*/\1$(TZ=UTC-8 date '+%Y-%m-%d %H:%M:%S %Z+8')<\/span>/" index.html
+          sed -Ei "s/(\<p class=\"text-xsm font-light\">).*/\1Last updated: $(TZ=UTC-8 date '+%Y-%m-%d %H:%M:%S %Z+8')<\/p>/" index.html
           aws s3 cp index.html s3://${{ secrets.S3_SITE_BUCKET }}/index.html
           aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} --paths '/*'
         if: steps.s3_sync.outputs.uploaded == '1'
