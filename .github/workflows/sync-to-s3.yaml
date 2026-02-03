@@ -27,14 +27,33 @@ jobs:
       - name: Remove .git* files from cloned repo before syncing to S3 bucket
         run: rm -rf .git*
 
-      # In order for s3_sync's `delete` to not delete the TF-generated view-count.js file (which is not in our repo)
-      # and the index.html file (which was updated by Terraform to import the view-count.js file),
+      # In order for s3_sync's `delete` to not delete the TF-generated files (which are not in our repo)
+      # including view-count.js and chatbot files (chatbot.js, chatbot-data.js, chatbot.css, chatbot.html),
       # we must first download them from the S3 bucket before we sync the cloned repo.
-      - name: Download TF-generated JS & sync repo to S3 bucket using Ansible
+      - name: Download TF-generated files & sync repo to S3 bucket using Ansible
         id: s3_sync
         run: |
-          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/view-count.js ./assets/js/view-count.js
+          # Download view-count.js (from TF)
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/view-count.js ./assets/js/view-count.js || echo "view-count.js not found"
+          
+          # Download chatbot files (from TF chatbot-to-s3 workflow)
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/chatbot.js ./assets/js/chatbot.js || echo "chatbot.js not found"
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/chatbot-data.js ./assets/js/chatbot-data.js || echo "chatbot-data.js not found"
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/js/chatbot.html ./assets/js/chatbot.html || echo "chatbot.html not found"
+          aws s3 cp s3://${{ secrets.S3_SITE_BUCKET }}/assets/css/chatbot.css ./assets/css/chatbot.css || echo "chatbot.css not found"
+          
+          # Inject view-count.js reference into index.html
           sed -Ei 's/^((\s+)<\/main>)/\1\n\n\2<!-- Inserted by Terraform \/ GitHub Actions -->\n\2<script src=".\/assets\/js\/view-count.js"><\/script>/' index.html
+          
+          # Inject chatbot CSS reference into index.html (before </head>)
+          if ! grep -q 'chatbot.css' ./index.html; then
+            sed -i 's|</head>|  <!-- Chatbot Styles (Inserted by GitHub Actions) -->\n  <link rel="stylesheet" href="./assets/css/chatbot.css">\n</head>|' ./index.html
+          fi
+          
+          # Inject chatbot JS references into index.html (before </body>)
+          if ! grep -q 'chatbot-data.js' ./index.html; then
+            sed -i 's|</body>|  <!-- Chatbot (Inserted by GitHub Actions) -->\n  <div id="chatbot-root"></div>\n  <script src="./assets/js/chatbot-data.js"></script>\n  <script src="./assets/js/chatbot.js"></script>\n</body>|' ./index.html
+          fi
 
           ansible localhost -c local -e "ansible_python_interpreter=/usr/bin/python3.12" -m community.aws.s3_sync \
           -a "bucket=${{ secrets.S3_SITE_BUCKET }} file_root='.' file_change_strategy='checksum' delete=true" | tee /tmp/ansible.log
